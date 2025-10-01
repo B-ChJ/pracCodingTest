@@ -29,14 +29,14 @@ public class BruteForce {
         }
 
         //500*i + 100*j + 50*k + 10*l = N
-        for(int i = 1; i <= num; i++){
-            for(int j = 1; j <= num; j++){
-                for(int k = 1; k <= num; k++){
-                    for(int l = 1; l <= num; l++){
-                        int sum = 500 * i + 100 * j + 50 * k + 10 * l;
+        for(int i = 1; i <= maxCoins[0]; i++){
+            for(int j = 1; j <= maxCoins[1]; j++){
+                for(int k = 1; k <= maxCoins[2]; k++){
+                    for(int l = 1; l <= maxCoins[3]; l++){
+                        int sum = coins[0]*i + coins[1]*j + coins[2]*k + coins[3]*l;
 
                         if(sum == num) {
-                            minCoins = i+j+k+l;
+                            minCoins = Math.min(minCoins, i+j+k+l);
                         }
                     }
                 }
