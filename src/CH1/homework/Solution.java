@@ -1,5 +1,7 @@
 package CH1.homework;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**음악 테스트 응시자의 패턴
@@ -26,9 +28,27 @@ import java.util.Scanner;
  * 출력
  * 가장 많은 문제를 맞힌 사람*/
 public class Solution {
-    public int[] solution(String[] answers) {
+    String[] tester1 = {"도", "레", "미", "파"};
+    String[] tester2 = {"레", "레", "파", "파", "도", "도"};
+    String[] tester3 = {"미", "파", "미", "도", "레", "도"};
 
+    public int[] solution(String[] answers) {
         int[] answer = {};
+
+        List<String[]> testers = new ArrayList<String[]>();
+        testers.add(tester1);
+        testers.add(tester2);
+        testers.add(tester3);
+        int[] score = new int[testers.size()]; //각 응시자의 점수 배열
+        for (int i = 0; i < testers.size(); i++) {
+            for (int j = 0; j < answers.length; j++) {
+                if(testers.get(i)[j%testers.get(i).length].equals(answers[j]))
+                {score[i]++;}
+            }
+        }
+
+        System.out.println(score);
+
         return answer;
     }
 
@@ -44,17 +64,16 @@ public class Solution {
         for (int i = 0; i < N; i++) {
             answers[i] = sc.next();
         }
-        for(int j = 0; j < N; j++) {
-        System.out.println(answers[j]);}
+
         // 결과 출력
-//        int[] result = solution.solution(answers);
-//        StringBuilder sb = new StringBuilder();
-//        for (int i = 0; i < result.length; i++) {
-//            sb.append(result[i]);
-//            if (i < result.length - 1) {
-//                sb.append(" ");
-//            }
-//        }
-//        System.out.println(sb.toString());
+        int[] result = solution.solution(answers);
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < result.length; i++) {
+            sb.append(result[i]);
+            if (i < result.length - 1) {
+                sb.append(" ");
+            }
+        }
+        System.out.println(sb.toString());
     }
 }
