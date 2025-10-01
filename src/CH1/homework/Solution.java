@@ -33,22 +33,29 @@ public class Solution {
     String[] tester3 = {"미", "파", "미", "도", "레", "도"};
 
     public int[] solution(String[] answers) {
-        int[] answer = {};
 
         List<String[]> testers = new ArrayList<String[]>();
         testers.add(tester1);
         testers.add(tester2);
         testers.add(tester3);
         int[] score = new int[testers.size()]; //각 응시자의 점수 배열
+        ArrayList<Integer> pass = new ArrayList<>();
         for (int i = 0; i < testers.size(); i++) {
             for (int j = 0; j < answers.length; j++) {
                 if(testers.get(i)[j%testers.get(i).length].equals(answers[j]))
                 {score[i]++;}
             }
         }
+        int best = Math.max(Math.max(score[0], score[1]), score[2]); // 최고점수 best
+        for(int s = 1; s < score.length; s++) { //최고점을 가진 응시자 번호 추출
+            if(score[s-1]==best){ pass.add(s); }
+        }
 
-        System.out.println(score);
-
+        int[] answer = new int[pass.size()];
+        for (int i = 0; i < pass.size(); i++) {
+            if(pass.get(i)==0){ continue; }
+            else answer[i] = pass.get(i);
+        }
         return answer;
     }
 
