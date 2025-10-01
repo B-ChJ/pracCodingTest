@@ -17,12 +17,12 @@ import java.util.Scanner;
  * Array : 동전의 종류별 가질 수 있는 최다 동전 개수[], 동전 종류 [500, 100, 50, 10] */
 public class BruteForce {
 
-    public static void main(String[] args) {
+    public static int main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("거슬러 줘야 하는 금액을 입력하세요.(0 ≤ N ≤ 10,000)");
         int[] coins = new int[]{500, 100, 50, 10};
         int num = input.nextInt();
-        int minCoins = num;
+        int minCoins = Integer.MAX_VALUE;
         int[] maxCoins =  new int[coins.length];
         for(int i = 0; i < coins.length; i++){
             maxCoins[i] = num/coins[i];
@@ -43,5 +43,6 @@ public class BruteForce {
             }
         }
         System.out.println("최소 동전 갯수: " + minCoins);
+        return minCoins == Integer.MAX_VALUE ? -1 : minCoins;
     }
 }
