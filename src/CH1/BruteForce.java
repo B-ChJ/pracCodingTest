@@ -21,18 +21,18 @@ public class BruteForce {
         Scanner input = new Scanner(System.in);
         System.out.println("거슬러 줘야 하는 금액을 입력하세요.(0 ≤ N ≤ 10,000)");
         int[] coins = new int[]{500, 100, 50, 10};
-        int minCoins = 0;
         int num = input.nextInt();
+        int minCoins = num;
         int[] maxCoins =  new int[coins.length];
         for(int i = 0; i < coins.length; i++){
             maxCoins[i] = num/coins[i];
         }
 
         //500*i + 100*j + 50*k + 10*l = N
-        for(int i = 1; i <= maxCoins[0]; i++){
-            for(int j = 1; j <= maxCoins[1]; j++){
-                for(int k = 1; k <= maxCoins[2]; k++){
-                    for(int l = 1; l <= maxCoins[3]; l++){
+        for(int i = 0; i <= maxCoins[0]; i++){
+            for(int j = 0; j <= maxCoins[1]; j++){
+                for(int k = 0; k <= maxCoins[2]; k++){
+                    for(int l = 0; l <= maxCoins[3]; l++){
                         int sum = coins[0]*i + coins[1]*j + coins[2]*k + coins[3]*l;
 
                         if(sum == num) {
