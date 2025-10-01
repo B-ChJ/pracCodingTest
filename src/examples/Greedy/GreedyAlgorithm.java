@@ -29,8 +29,8 @@ public class GreedyAlgorithm {
         int countCoins = 0;
 
         for(int i = 0; i < coins.length; i++){
-            countCoins = remain/coins[i];
-            remain = remain%coins[i];
+            countCoins += remain/coins[i]; //사용한 동전의 개수를 합산
+            remain %= coins[i]; //동전이 가질 수 있는 최대 금액을 제한 나머지 금액 저장
         }
         return countCoins;
     }
@@ -40,6 +40,7 @@ public class GreedyAlgorithm {
         int money = 0;
         Scanner input = new Scanner(System.in);
 
+        System.out.println("거스름돈을 입력해 주세요.");
         money = input.nextInt();
 
         System.out.println(Solution(money, coins));
